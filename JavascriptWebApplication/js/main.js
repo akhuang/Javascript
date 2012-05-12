@@ -32,42 +32,18 @@ var Class = function (parent) {
         if (included) included(klass);
     };
 
+    klass.proxy = function (func) {
+        var self = this;
+        return (function () {
+            return func.apply(self, arguments);
+        });
+    };
+
+    klass.fn.proxy = klass.proxy;
+
+
     return klass;
 };
 
-var Person = new Class();
-Person.extend({
-    find: function (id) { },
-    exists: function (id) {
-        console.log('Person.exists();');
-    },
-    extended: function (klass) {
-        console.log(klass, ' was invoked');
-    }
-});
 
 
-
-$(function () {
-    var person = Person.exists(1);
-
-    Person.include({
-        save: function (id) {
-            console.log('save');
-        }
-    });
-
-    var person = new Person();
-    person.save();
-
-    var Animal = new Class();
-    Animal.include({
-        breath: function () {
-            console.log('breath');
-        }
-    });
-
-    var Cat = new Class(Animal);
-    var t = new Cat;
-    t.breath();
-});
