@@ -78,4 +78,6 @@ $(function () {
     }
     console.log(person.attributes['play']);
     person.speak();
+
+    $("ul.nav-tabs").tabs(".TabContent");
 });
