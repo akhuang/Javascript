@@ -4,9 +4,18 @@
     <meta charset="utf-8">
     <title>JavaScript Web Application</title>
     <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <style type="text/css">
+        hr
+        {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
     <a id="btn">click me </a><a id="btnProxy">Button proxy</a>
+    <hr />
+    <h2>jQuery tabs plugin</h2>
     <ul class="nav-tabs">
         <li data-tab="tab1"><a href="#">tab1</a></li>
         <li data-tab="tab2"><a href="#">tab2</a></li>
@@ -15,11 +24,15 @@
         <div data-tab="tab1" class="normalDiv">tab1 content</div>
         <div data-tab="tab2" class="normalDiv">tab2 content</div>
     </div>
+    <hr />
+    <h2>Model.js</h2>
+    <p id="name"></p>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="js/jquery-tabs.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/spine.js"></script>
     <script type="text/javascript" src="js/client.js"></script>
+    <script type="text/javascript" src="js/model.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#btn").click(function () {
@@ -27,6 +40,10 @@
                 alert(test.html());
                 alert(" clicked");
             });
+
+            var asset = Model.init({ name: 'phoenix' });
+            $('#name').html(asset.name);
+
         });
     </script>
 </body>

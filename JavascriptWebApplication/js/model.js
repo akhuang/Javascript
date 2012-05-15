@@ -19,10 +19,33 @@ var Model = {
     },
 
     init: function () {
+        alert(this.prototype);
         var instance = Object.create(this.prototype);
+        alert(instance);
         instance.parent = this;
         instance.init.apply(instance, arguments);
 
         return instance;
     },
+
+    extend: function (o) {
+        var extended = o.extended;
+        jQuery.extend(this, o);
+        if (extended) extended(this);
+    },
+
+    include: function (o) {
+        var included = o.included;
+        jQuery.extend(this.prototype, this);
+        if (included) included(this);
+    }
 };
+
+Model.include({
+    init: function () { },
+    load: function (attribute) { }
+});
+
+
+
+
