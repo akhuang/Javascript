@@ -40,8 +40,10 @@
                 alert(test.html());
                 alert(" clicked");
             });
+            var Asset = Model.create();
+            var asset = Asset.init({ name: 'phoenix' });
 
-            var asset = Model.init({ name: 'phoenix' });
+            alert(asset.name);
             $('#name').html(asset.name);
 
         });
