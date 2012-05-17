@@ -15,18 +15,23 @@
 <body>
     <a id="btn">click me </a><a id="btnProxy">Button proxy</a>
     <hr />
-    <h2>jQuery tabs plugin</h2>
+    <h2>
+        jQuery tabs plugin</h2>
     <ul class="nav-tabs">
         <li data-tab="tab1"><a href="#">tab1</a></li>
         <li data-tab="tab2"><a href="#">tab2</a></li>
     </ul>
     <div class="TabContent">
-        <div data-tab="tab1" class="normalDiv">tab1 content</div>
-        <div data-tab="tab2" class="normalDiv">tab2 content</div>
+        <div data-tab="tab1" class="normalDiv">
+            tab1 content</div>
+        <div data-tab="tab2" class="normalDiv">
+            tab2 content</div>
     </div>
     <hr />
-    <h2>Model.js</h2>
-    <p id="name"></p>
+    <h2>
+        Model.js</h2>
+    <p id="name">
+    </p>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="js/jquery-tabs.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/main.js"></script>
@@ -41,10 +46,22 @@
                 alert(" clicked");
             });
             var Asset = Model.create();
-            var asset = Asset.init({ name: 'phoenix' });
+            var asset = Asset.init({ name: 'phoenix', id: 2 });
+            asset.save();
+            var asset2 = Asset.init({ name: 'ak.huang', id: 3 });
+            asset2.save();
 
-            alert(asset.name);
-            $('#name').html(asset.name);
+            //            console.log("id=2;name=" + Asset.find(2).name);
+            //            console.log("id=3;name=" + Asset.find(3).name);
+            //            console.log('id=2 destroy');
+            //            asset.destroy();
+            //            console.log("id=2;name=" + Asset.find(2).name);
+
+            var assetGuid = Asset.init();
+            console.log(assetGuid.id);
+
+
+
 
         });
     </script>

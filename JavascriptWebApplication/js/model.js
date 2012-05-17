@@ -20,9 +20,7 @@ var Model = {
 
     init: function () {
         var instance = Object.create(this.prototype);
-        alert("1:" + instance);
         instance.parent = this;
-        alert("2:" + instance.init);
         instance.init.apply(instance, arguments);
 
         return instance;
@@ -53,6 +51,7 @@ Model.include({
     },
     create: function () {
         this.newRecord = false;
+        if(!this.id) this.id=Math.guid();
         this.parent.records[this.id] = this;
     },
     destroy: function () {
@@ -62,20 +61,33 @@ Model.include({
         this.parent.records[this.id] = this;
     },
     save: function () {
-        this.newRecord ? this.save() : this.update();
+        this.newRecord ? this.create() : this.update();
     },
 });
 
 Model.extend({
     find: function (id) {
-        if (this.records[id])
-            throw ("Unknown record");
-        return this.records[id];
-
-        //why it's not good?
+        //you can't not use this
         //return this.records[id] || throw("Unknown record");
-    },
+        
+        //CORRECT
+        return this.records[id] || 
+                function(){ 
+                    throw("Unknown record");
+                }();
+//        OR Use Another
+//        if (this.records[id])
+//            throw ("Unknown record");
+//        return this.records[id];
+    }
 });
+Math.guid = function(){
+return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+return v.toString(16);
+}).toUpperCase();
+};
+
 
 
 
