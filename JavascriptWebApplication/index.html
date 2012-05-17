@@ -15,21 +15,21 @@
 <body>
     <a id="btn">click me </a><a id="btnProxy">Button proxy</a>
     <hr />
-    <h2>
-        jQuery tabs plugin</h2>
+    <h2>jQuery tabs plugin</h2>
     <ul class="nav-tabs">
         <li data-tab="tab1"><a href="#">tab1</a></li>
         <li data-tab="tab2"><a href="#">tab2</a></li>
     </ul>
     <div class="TabContent">
         <div data-tab="tab1" class="normalDiv">
-            tab1 content</div>
+            tab1 content
+        </div>
         <div data-tab="tab2" class="normalDiv">
-            tab2 content</div>
+            tab2 content
+        </div>
     </div>
     <hr />
-    <h2>
-        Model.js</h2>
+    <h2>Model.js</h2>
     <p id="name">
     </p>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -57,10 +57,20 @@
             //            asset.destroy();
             //            console.log("id=2;name=" + Asset.find(2).name);
 
-            var assetGuid = Asset.init();
-            console.log(assetGuid.id);
+            var assetGuid = Asset.init({ name: "foo" });
+            assetGuid.save();
+            console.log("GUID:" + assetGuid.id);
 
+            console.log("AssetGuid's Name : " + Asset.find(assetGuid.id).name);
 
+            assetGuid.name = "boo";
+            //var dupGuid = Asset.find(assetGuid.id);
+            //dupGuid.name = 'boo';
+            //dupGuid.save();
+            console.log("AssetGuid's Name : " + Asset.find(assetGuid.id).name);
+            //console.log("dupGuid's Name : " + Asset.find(dupGuid.id).name);
+
+            //console.log("dupGuid's id: " + dupGuid.id);
 
 
         });

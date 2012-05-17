@@ -1,3 +1,11 @@
+Math.guid = function () {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    }).toUpperCase();
+};
+
+
 var Model = {
     inherited: function () { },
     created: function () { },
@@ -51,42 +59,44 @@ Model.include({
     },
     create: function () {
         this.newRecord = false;
-        if(!this.id) this.id=Math.guid();
+        if (!this.id) this.id = Math.guid();
         this.parent.records[this.id] = this;
     },
     destroy: function () {
         delete this.parent.records[this.id];
     },
     update: function () {
-        this.parent.records[this.id] = this;
+        this.parent.records[this.id] = this.dup();
     },
     save: function () {
         this.newRecord ? this.create() : this.update();
     },
+    dup: function () {
+        return jQuery.extend(true, {}, this);
+    }
 });
 
 Model.extend({
     find: function (id) {
         //you can't not use this
         //return this.records[id] || throw("Unknown record");
-        
+
         //CORRECT
-        return this.records[id] || 
-                function(){ 
-                    throw("Unknown record");
-                }();
-//        OR Use Another
-//        if (this.records[id])
-//            throw ("Unknown record");
-//        return this.records[id];
+        //return this.records[id] ||
+        //        function () {
+        //            throw ("Unknown record");
+        //        }();
+        //        OR Use Another
+        //        if (this.records[id])
+        //            throw ("Unknown record");
+        //        return this.records[id];
+
+        var record = this.records[id];
+        if (!record) throw ("Unknown record");
+
+        return record.dup();
     }
 });
-Math.guid = function(){
-return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-return v.toString(16);
-}).toUpperCase();
-};
 
 
 
