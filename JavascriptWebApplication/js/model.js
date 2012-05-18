@@ -60,7 +60,7 @@ Model.include({
     create: function () {
         this.newRecord = false;
         if (!this.id) this.id = Math.guid();
-        this.parent.records[this.id] = this;
+        this.parent.records[this.id] = this.dup();
     },
     destroy: function () {
         delete this.parent.records[this.id];
