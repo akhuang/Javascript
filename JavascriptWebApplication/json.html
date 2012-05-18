@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Web Application</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+    <style type="text/css">
+        hr
+        {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>JSON</h2>
+    <p id="name">
+    </p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery-tabs.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/model.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var Asset = Model.create();
+            Asset.attributes = ["name", "ext"];
+            var tmp = Asset.init({ name: "ak", ext: ".txt" });
+            tmp.save();
+            console.log(tmp.attributes());
+
+            var json = JSON.stringify(tmp.attributes());
+            console.log(json);
+
+            console.log(Asset.records);
+            console.log("Records:" + JSON.stringify(Asset.records));
+        });
+    </script>
+</body>
+</html>
