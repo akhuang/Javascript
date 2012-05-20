@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <title>JavaScript Web Application</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" />
+    <style type="text/css">
+        hr
+        {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .toggleView
+        {
+            margin: 20px;
+            padding: 20px;
+            width: 100px;
+            border: 5px dashed blue;
+        }
+
+            .toggleView.over
+            {
+                border-color: red;
+            }
+
+        .advancedView
+        {
+            margin: 20px;
+            padding: 20px;
+            width: 100px;
+            border: 5px dashed blue;
+        }
+
+            .advancedView.over
+            {
+                border-color: red;
+            }
+    </style>
+</head>
+<body>
+    <h2>匿名函数</h2>
+    <div id="view">
+        <div class="assets">asset1</div>
+        <div class="assets">asset2</div>
+    </div>
+    <hr />
+    <h2>Controller</h2>
+    <div class="toggleView">
+        this is toggle view
+    </div>
+    <hr />
+    <h2>Advanced Controller</h2>
+    <div class="advancedView">
+        this is advanced toggle view
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/Controller.js"></script>
+    <script type="text/javascript" src="js/Controller_Advanced.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            var ToggleView = Controller.create({
+                init: function (view) {
+                    this.view = $(view);
+                    this.view.mouseover(this.proxy(this.toggleClass));
+                    this.view.mouseout(this.proxy(this.toggleClass));
+                },
+                toggleClass: function (e) {
+                    this.view.toggleClass("over", e.data);
+                }
+            });
+
+            new ToggleView('.advancedView');
+
+        });
+    </script>
+</body>
+</html>

@@ -86,7 +86,20 @@ Model.include({
     //override JSON.stringify()
     toJSON: function () {
         return this.attributes();
+    },
+
+    createRemote: function (url, callback) {
+        $.post(url, this.attributes(), callback);
+    },
+    updateRemote: function (url, callback) {
+        $.ajax({
+            url: url,
+            data: this.attributes,
+            success: callback,
+            type: "PUT"
+        });
     }
+
 });
 
 Model.extend({
