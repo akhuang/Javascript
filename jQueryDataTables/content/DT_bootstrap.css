@@ -1,0 +1,51 @@
+DIV.dataTables_length LABEL {
+	TEXT-ALIGN: left; FLOAT: left
+}
+DIV.dataTables_length SELECT {
+	WIDTH: 75px
+}
+DIV.dataTables_filter LABEL {
+	FLOAT: right
+}
+DIV.dataTables_info {
+	PADDING-TOP: 8px
+}
+DIV.dataTables_paginate {
+	MARGIN: 0px; FLOAT: right
+}
+TABLE.table {
+	MARGIN-BOTTOM: 6px !important; CLEAR: both
+}
+TABLE.table THEAD .sorting {
+	CURSOR: pointer
+}
+TABLE.table THEAD .sorting_asc {
+	CURSOR: pointer
+}
+TABLE.table THEAD .sorting_desc {
+	CURSOR: pointer
+}
+TABLE.table THEAD .sorting_asc_disabled {
+	CURSOR: pointer
+}
+TABLE.table THEAD .sorting_desc_disabled {
+	CURSOR: pointer
+}
+TABLE.table THEAD .sorting {
+	BACKGROUND: url(images/sort_both.png) no-repeat right center
+}
+TABLE.table THEAD .sorting_asc {
+	BACKGROUND: url(images/sort_asc.png) no-repeat right center
+}
+TABLE.table THEAD .sorting_desc {
+	BACKGROUND: url(images/sort_desc.png) no-repeat right center
+}
+TABLE.table THEAD .sorting_asc_disabled {
+	BACKGROUND: url(images/sort_asc_disabled.png) no-repeat right center
+}
+TABLE.table THEAD .sorting_desc_disabled {
+	BACKGROUND: url(images/sort_desc_disabled.png) no-repeat right center
+}
+TABLE.dataTable TH:active {
+	OUTLINE-STYLE: none; OUTLINE-COLOR: invert; OUTLINE-WIDTH: medium
+}
