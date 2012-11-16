@@ -14,9 +14,13 @@
 </head>
 <body>
     <div style="margin-top: 10px" class="container">
+	<input type='button' value='btn'  id='btnUp' />
         <table id="table_id">
             <thead>
                 <tr>
+					<th>
+						<input type='checkbox' name='chkAll' />
+					</th>
                     <th>
                         Column 1
                     </th>
@@ -30,6 +34,9 @@
             </thead>
             <tbody>
                 <tr>
+					<td>
+						<input type='checkbox' name='chk' />
+					</td>
                     <td>
                         Row 1 Data 1
                     </td>
@@ -41,6 +48,9 @@
                     </td>
                 </tr>
                 <tr>
+					<td>
+						<input type='checkbox' id='chk' />
+					</td>
                     <td>
                         Row 2 Data 1
                     </td>
@@ -54,5 +64,12 @@
             </tbody>
         </table>
     </div>
+
+	<script language='javascript'>
+
+		$(function(){
+			
+		});
+	</script>
 </body>
 </html>
